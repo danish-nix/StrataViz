@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Importing</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <script src="https://unpkg.com/d3@5.6.0/dist/d3.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      outline: none;
+    }
+    body{
+      font-family: Oswald;
+      overflow-x: hidden;
+    }
+
+    header{
+      display:inline-block;
+      width: 100%;
+      position: fixed;
+      top:0;
+      left: 0;
+      padding:40px 50px;
+      z-index:99;
+    }
+
+    .slider .item{
+      background-color: #8c001e;
+      padding:26px;
+    }
+
+    .item-image{
+      float:left;
+
+    }
+    .caption{
+      float:left;
+      color:#fff;
+      padding:230px 0;
+      position: relative;
+      z-index:2;
+    }
+    .caption h1{
+      font-weight: 400;
+      font-size:100px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      text-shadow: 10px 15px 0 rgba(0 0 0 / 0.25);
+    }
+    .caption h4{
+      font-weight:300;
+      font-size: 30px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+    }
+    .caption:before{
+      content: attr(data-count);
+      position: absolute;
+      top:-5%;
+      left:0;
+      color:#fff;
+      font-size:500px;
+      font-weight:300;
+      opacity:.1;
+    }
+    /*Slider Arrow*/
+    .slick-arrow{
+      postion:absolute;
+      font-size:0;
+      width:17px;
+      height:81px;
+      background-size: contain;
+      background-position: center;
+      border:0;
+      left:5px;
+      z-index:9;
+    }
+    .slick-prev,.slick-prev:hover,.slick-prev:focus{
+      background:url(image/arrow-prev.png) no-repeat;
+      top:40%;
+    }
+    .slick-next,.slick-next:hover,.slick-next:focus{
+      background:url(image/arrow-next.png) no-repeat;
+      top:55%;
+    }
+    .slick-next:before,.slick-prev:before{
+      display:none;
+    }
+    /*SLIDER DOTS*/
+    .slick-dots{
+      width:30px;
+      bottom:inherit;
+      top:40%;
+      right:70px;
+    }
+    .slick-dots li{
+      width: 30px;
+      height: 30px;
+      margin-bottom: 20px;
+    }
+    .slick-dots li button{
+      width:30px;
+      height:30px;
+      border:1px solid #ffffff30;
+      border-radius:50px;
+      transition: all ease 0.3s;
+    }
+    .slick-dots li.slick-active button{
+      border-color:#fff;
+    }
+    .slick-dots li button:hover{
+      border-color:#fff;
+    }
+    .slick-dots li button:before{
+      content:'';
+      width:8px;
+      height:8px;
+      top: 37%;
+      right:0;
+      margin:0 auto;
+      background-color: #fff;
+      border-radius: 50px;
+      opacity:1 !important;
+    }
+
+    /*SLIDE OVERLAY*/
+    .slide-overlay{
+      position:absolute;
+      top:0;
+      right: 0;
+      width: 330px;
+      height: 110%;
+      background-color: #790017;
+      z-index:1;
+    }
+    .slider-wrap{
+      position: relative;
+      z-inder:9;
+    }
+    .slider.slick-slider{
+      margin-bottom: -0;
+    }
+  </style>
+
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <h4><a href="/Homepage.html">STRATAVIS</a></h4>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a href="/Homepage.html">Home</a>
+    </li>
+    <li>
+      <a href="About.html">About</a>
+    </li>
+    <li>
+      <a href="Dashboard.html">Dashboard</a>
+    </li>
+    <li>
+      <a href="Contact.html">Contact Us</a>
+    </li>
+  </ul>
+
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+</nav>
+
+<div id="input-wrapper">
+
+  <!-- slider -->
+  <div class="slider-wrap">
+    <div class="slider">
+
+      <div class="item">
+        <div class="item-image">
+          <img src="" alt="">
+        </div>
+        <div class="caption" data-count="01">
+          <h1>IMPORT YOUR DATA</h1>
+          <h4>From Your Files</h4>
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-image">
+          <img src="" alt="">
+        </div>
+        <div class="caption" data-count="02">
+          <h1>Sample Data</h1>
+          <h4>By using stratified sampling</h4>
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+        <div class="item">
+          <div class="item-image">
+            <img src="" alt="">
+          </div>
+          <div class="caption" data-count="03">
+            <h1>Viusalise Data</h1>
+            <h4>Visualize in Scatter Plot or Bee Swarm</h4>
+          </div>
+          <div class="slide-overlay"></div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </div>
+  <script src="../js/navigationMenu.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script>
+    $('.slider').slick({
+      dots:true,
+      vertical:true
+    });
+
+  </script>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Importing</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://unpkg.com/d3@5.6.0/dist/d3.min.js"></script>
+  <script src="https://d3js.org/d3-array.v2.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+  <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script src="lodash.js"></script>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Poppins,sans-serif;
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="particles-js">
+  <script src="../js/particles.js"></script>
+  <script src="../js/app.js"></script>
+</div>
+
+<nav>
+  <div class="logo">
+    <h4><a href="../Homepage.html">STRATAVIS</a></h4>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a href="/Homepage.html">Home</a>
+    </li>
+    <li>
+      <a href="About.html">About</a>
+    </li>
+    <li>
+      <a href="Dashboard.html">Dashboard</a>
+    </li>
+    <li>
+      <a href="Contact.html">Contact Us</a>
+    </li>
+  </ul>
+
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+</nav>
+
+<div id="form-wrapper">
+
+
+
+  <div class="form-container">
+    <div class="input_form">
+      <form id="input-form">
+
+        <h1 class="form-header">Import Your Data</h1></br></br>
+
+        <label>Upload Data:</label><br/><br/>
+        <input type="file" name="file" id="upload_file" accept=".xls,.xlsx,.csv"/>
+
+
+        <label id="display"></label><br/><br/>
+
+        <label id="char" >Please choose 1 characteristic to be grouped by</label>
+
+        <select id="columns">
+          <option value="default"></option>
+        </select><br/><br/>
+
+
+        <p id="test">
+
+        </p>
+
+        <div id="dataCount">
+
+        </div><br/><br/>
+
+        <div class="dataNumberClass">
+          <label for="dataNumber">Please enter the number of data you would like to sample: </label>
+          <input  id="dataNumber"  type="text" placeholder="123" name="dataNumber" required><br/><br/>
+        </div>
+
+
+        <div class="clearfix">
+          <button type="submit" id="submit_button" class="form-button" >Sample</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/navigationMenu.js"></script>
+  <script src="../js/dashboard.js"></script>
+
+</div>
+</body>
+
+</html>

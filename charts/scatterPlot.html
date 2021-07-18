@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scatter Plot</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.0.0/d3.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script src="lodash.js"></script>
+  <style>
+    body {
+      margin: 0px;
+      overflow: hidden;
+    }
+
+
+  </style>
+</head>
+<body>
+
+<div id="particles-js">
+  <script src="../js/particles.js"></script>
+  <script src="../js/app.js"></script>
+</div>
+
+  <nav>
+    <div class="logo">
+      <h4><a href="../gui/Homepage.html">STRATAVIS</h4>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="../gui/Homepage.html">Home</a>
+      </li>
+      <li>
+        <a href="../gui/About.html">About</a>
+      </li>
+      <li>
+        <a href="../gui/Dashboard.html">Dashboard</a>
+      </li>
+      <li>
+        <a href="../gui/Contact.html">Contact Us</a>
+      </li>
+    </ul>
+
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </nav>
+
+
+
+  <div id="scatter-wrapper">
+
+    <div  id="scatterPlotGraph">
+      <div id="menus">
+        <span id="x-menu"></span>
+        vs.
+        <span id="y-menu"></span>
+      </div>
+      <svg class="scatterPlot" width="1080" height="500"></svg>
+      <div class="edit">
+        <label>Edit Chart: </label></br></br>
+        <label>Label Color:</label></br>
+        <input id="labelColor" type="color"></br></br>
+        <label>Scale Color:</label></br>
+        <input id="scaleColor" type="color"></br></br>
+        <label>Data Color:</label></br>
+        <input id="dataColor" type="color"></br></br>
+        <label>Background Color:</label></br>
+        <input id="backgroundColor" type="color"></br></br>
+        <input id="gridColor" type="checkbox" label="Grid">
+        <label>No Grid</label></br></br>
+      </div>
+      <div class="scatterButton">
+        <button class="original" id="original">Original</button></br></br>
+        <button class="sample" id="sample">Sampled</button>
+      </div>
+    </div>
+
+    <script type="module" src="../js/scatterPlot.js"></script>
+  </div>
+</body>
+</html>

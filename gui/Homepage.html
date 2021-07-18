@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Homepage</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://unpkg.com/d3@5.6.0/dist/d3.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+</head>
+<style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    outline: none;
+  }
+</style>
+<body>
+
+<nav>
+  <div class="logo">
+    <h4><a href="Homepage.html">STRATAVIS</h4>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a href="Homepage.html">Home</a>
+    </li>
+    <li>
+      <a href="About.html">About</a>
+    </li>
+    <li>
+      <a href="Dashboard.html">Dashboard</a>
+    </li>
+    <li>
+      <a href="Contact.html">Contact Us</a>
+    </li>
+  </ul>
+
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+</nav>
+
+<div id="wrapper">
+
+  <div id="particles-js">
+    <script src="../js/particles.js"></script>
+    <script src="../js/app.js"></script>
+  </div>
+
+  <section class="banner">
+    <div class="imgBx">
+      <img src="../image/img1.jpg" class="active">
+      <img src="../image/img2.jpg">
+      <img src="../image/img3.jpg">
+      <img src="../image/img4.jpg">
+    </div>
+
+    <div class="contentBx">
+      <div class="active">
+        <h2>Visualise Your Data Your Own Way</h2>
+        <p></p>
+      </div>
+      <div>
+        <h2></h2>
+        <p></p>
+      </div>
+      <div>
+        <h2>Slide Three</h2>
+        <p></p>
+      </div>
+      <div>
+        <h2>Visualise Now!</h2>
+        <p></p>
+        <a href="Dashboard.html">Start visualise</a>
+      </div>
+    </div>
+
+    <ul class="controls">
+      <li onclick="prevSlide();prevSlideText();"></li>
+      <li onclick="nextSlide();nextSlideText();"></li>
+    </ul>
+  </section>
+
+  <script type="text/javascript">
+    const imgBx = document.querySelector('.imgBx');
+    const slides = imgBx.getElementsByTagName('img');
+    var i = 0;
+
+    function nextSlide() {
+      slides[i].classList.remove('active');
+      i= (i + 1) % slides.length;
+      slides[i].classList.add('active');
+
+    }
+
+    function prevSlide() {
+      slides[i].classList.remove('active');
+      i= (i - 1 + slides.length) % slides.length;
+      slides[i].classList.add('active');
+
+    }
+
+    const contentBx = document.querySelector('.contentBx');
+    const slidesText = contentBx.getElementsByTagName('div');
+    var j = 0;
+
+    function nextSlideText() {
+      slidesText[j].classList.remove('active');
+      j= (j + 1) % slidesText.length;
+      slidesText[j].classList.add('active');
+
+    }
+    function prevSlideText() {
+      slidesText[j].classList.remove('active');
+      j = (j - 1 + slidesText.length) % slidesText.length;
+      slidesText[j].classList.add('active');
+    }
+  </script>
+  <script src="../js/navigationMenu.js"></script>
+
+</div>
+</body>
+
+</html>

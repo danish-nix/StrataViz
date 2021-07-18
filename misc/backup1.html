@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Importing</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://unpkg.com/d3@5.6.0/dist/d3.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Poppins,sans-serif;
+    }
+  </style>
+
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <h4><a href="../Homepage.html">STRATAVIS</h4>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a href="../Homepage.html">Home</a>
+    </li>
+    <li>
+      <a href="../gui/About.html">About</a>
+    </li>
+    <li>
+      <a href="../gui/Dashboard.html">Dashboard</a>
+    </li>
+    <li>
+      <a href="../gui/Contact.html">Contact Us</a>
+    </li>
+  </ul>
+
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+</nav>
+
+<div id="form-wrapper">
+
+  <div id="particles-js">
+    <script src="../js/particles.js"></script>
+    <script src="../js/app.js"></script>
+  </div>
+
+  <div class="container">
+    <div class="input_form">
+      <form  method="POST">
+
+        <h1 class="form-header">Please insert your data</h1>
+
+        <label id="fname">First Name</label>
+        <input type="text" placeholder="John" name="name" required><br/><br/>
+
+        <label id="lname">Last Name</label>
+        <input type="text" placeholder="Doe" name="name" required><br/><br/>
+
+        <label id="email">Email</label>
+        <input type="text" placeholder="Enter email" name="email" required><br/><br/>
+
+        <label id="phone">Phone No.</label>
+        <input type="text" placeholder="Enter phone" name="phone" required><br/><br/>
+
+
+        <input type="file"  id="upload_file" accept=".xls,.xlsx,.csv"/>
+
+
+        <label id="display"></label><br/><br/>
+        <script>
+
+          let data;
+          let yColumn;
+          let cell = [];
+
+          let selectedFile;
+
+          const onYColumnClicked = column =>{
+            yColumn = column;
+            render();
+          };
+
+          const render = () => {
+            d3.select('#char');
+            let select = selection.selectAll('select').data([null]);
+            select = select.enter()
+              .append('select')
+              .merge(select)
+              .on('change',function() {
+                onOptionClicked(this.value);
+              });
+
+            const option = select.selectAll('option').data(options);
+            option.enter().append('option').merge(option)
+              .attr('value',d => d)
+              .property('selected',d => d === selectedOption)
+              .text(d => d);
+
+
+          }
+
+          /**
+
+           Parsing Excel File
+
+           **/
+          let upload = document.getElementById('upload_file');
+          upload.addEventListener("change",(event)=>{
+
+
+            let fileReader = new FileReader();
+            fileReader.readAsBinaryString(event.target.files[0]);
+            fileReader.onload = (event) => {
+              let data = event.target.result;
+              let wb = XLSX.read(data,{type:"binary"});
+              var result= {};
+              wb.SheetNames.forEach(function(name){
+
+                var sheet = wb.Sheets[name],
+                  range = XLSX.utils.decode_range(sheet['!ref']),
+                  row_start = range.s.r, row_end = range.e.r,
+                  col_start = range.s.c, col_end = range.e.c,
+                  rows = [], row_data, i, addr, cell;
+
+                for(row_start=0;row_start<=row_end;row_start++) {
+                  row_data = [];
+                  for(i=col_start;i<=col_end;i++) {
+                    addr = XLSX.utils.encode_col(i) + XLSX.utils.encode_row(row_start);
+                    cell = sheet[addr];
+
+                    if(cell.l) {
+                      row_data.push({text: cell.v, link: cell.l.Target});
+                    } else {
+                      row_data.push(cell.v);
+                    }
+                  }
+                  rows.push(row_data);
+                }
+                result[name] = rows;
+              });
+              render(result);
+              console.log(result);
+
+            }
+
+          });
+
+        </script>
+        <label id="char" >Please choose 1 characteristic to be grouped by</label>
+
+        <div id="columns"></div><br/><br/>
+
+        <div class="dataNumber">
+          <label id="dataNumber">Please enter the number of data to sample: </label>
+          <input type="text" placeholder="123" name="dataNumber" required><br/><br/>
+        </div>
+
+        <div class="clearfix">
+          <a href="../Homepage.html"></a>
+          <span><button  class="form-button">Cancel</button></span>
+          <span><button type="submit" class="form-button">Sample</button></span>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/navigationMenu.js"></script>
+
+</div>
+</body>
+
+</html>
